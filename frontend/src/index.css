@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, sans-serif;
+  color: #e6edf7;
+  background: #0b1220;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #0b1220;
+  color: #e6edf7;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #62bfff;
+  outline-offset: 2px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+body .bg-white {
+  background-color: #111b2c;
+}
+
+body .bg-slate-50 {
+  background-color: #141f32;
+}
+
+body .bg-slate-100 {
+  background-color: #1c2a3f;
+}
+
+body .bg-red-50 {
+  background-color: #3a2029;
+}
+
+body .bg-amber-50 {
+  background-color: #392d1c;
+}
+
+body .bg-emerald-50 {
+  background-color: #16352f;
+}
+
+body .bg-blue-50 {
+  background-color: #162d43;
+}
+
+body .border-slate-100,
+body .border-slate-200 {
+  border-color: #29374c;
+}
+
+body .border-slate-300 {
+  border-color: #40516b;
+}
+
+body .border-red-200 {
+  border-color: #713b45;
+}
+
+body .border-amber-200 {
+  border-color: #6f532b;
+}
+
+body .border-emerald-200 {
+  border-color: #28634e;
+}
+
+body .border-blue-200,
+body .border-blue-100 {
+  border-color: #2d5575;
+}
+
+body .text-slate-900,
+body .text-slate-800,
+body .text-slate-700 {
+  color: #e6edf7;
+}
+
+body .text-slate-600,
+body .text-slate-500 {
+  color: #aab8cc;
+}
+
+body .text-slate-400 {
+  color: #8494aa;
+}
+
+body .text-red-900,
+body .text-red-800,
+body .text-red-700 {
+  color: #ffb4b4;
+}
+
+body .text-amber-800,
+body .text-amber-700 {
+  color: #ffd28a;
+}
+
+body .text-emerald-800 {
+  color: #8ce5bd;
+}
+
+body .text-blue-800 {
+  color: #a8dcff;
+}
+
+body .bg-surface-container-high {
+  background-color: #24334a;
+}
+
+body .bg-primary-fixed {
+  background-color: #1b3b56;
+}
+
+body .text-on-primary-fixed {
+  color: #d8edff;
+}
+
+body input,
+body textarea,
+body select {
+  color: #e6edf7;
+  background-color: #111b2c;
+}
+
+body input::placeholder,
+body textarea::placeholder {
+  color: #8494aa;
+}
+
+body .hover\:bg-slate-50:hover {
+  background-color: #1a273a;
+}
+
+body .hover\:bg-slate-100:hover {
+  background-color: #24334a;
+}
+
+body .hover\:bg-white:hover {
+  background-color: #1b283b;
+}

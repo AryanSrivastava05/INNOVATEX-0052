@@ -36,13 +36,35 @@ Run tests from the `backend` directory:
 python -m pytest -q
 ```
 
+## Deploy
+
+### API on Render
+
+1. Create a Render Blueprint from this repository using the root [`render.yaml`](./render.yaml).
+2. Set the generated `DEMO_TOKEN` in the Render service environment. Render generates it when the Blueprint creates the service.
+3. Set `FRONTEND_ORIGIN` to the exact Vercel production origin, for example `https://pulsecare-demo.vercel.app`. For multiple deployed origins, use a comma-separated list of exact origins with no paths, e.g. `https://pulsecare-demo.vercel.app,https://pulsecare-preview.vercel.app`.
+4. Deploy and verify `https://<render-service>.onrender.com/api/health`.
+
+Render runs the simulator and keeps its readings and audit trail in memory. Restarting or sleeping the service resets this synthetic demo state. The free Render plan may sleep after inactivity.
+
+### Frontend on Vercel
+
+1. Import the same repository into Vercel and set **Root Directory** to `frontend`.
+2. Set these Vercel project environment variables for Production (and Preview if needed):
+   - `VITE_API_URL=https://<render-service>.onrender.com` (origin only; omit `/api`)
+   - `VITE_DEMO_TOKEN=<the same value as Render DEMO_TOKEN>`
+3. Deploy. Vercel uses `frontend/vercel.json` to route browser-side React Router paths back to the SPA.
+4. Add each Vercel origin that needs API access to Render's comma-separated `FRONTEND_ORIGIN`, then redeploy the Render service if its environment changed.
+
+`VITE_DEMO_TOKEN` is bundled into browser code so it is visible to users. It is suitable only for this synthetic demo; do not use this design for privileged or production data.
+
 ## Environment variables
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `TICK_SECONDS` | `5` | Interval between background simulator ticks |
 | `WEBHOOK_URL` | empty | Webhook for new critical alerts and escalations; empty disables notifications |
-| `FRONTEND_ORIGIN` | `http://localhost:3000` | Only browser origin allowed by CORS |
+| `FRONTEND_ORIGIN` | `http://localhost:5173` | Comma-separated exact browser origins allowed by CORS |
 | `ESCALATION_SECONDS` | `60` | Seconds before an unacknowledged critical alert escalates |
 | `DEMO_TOKEN` | empty | Required `X-Demo-Token` for manual tick and scenario-trigger endpoints |
 | `GROQ_API_KEY` | empty | Optional Groq key for `GET /api/handoff?ai=true`; keep private in `.env` |
